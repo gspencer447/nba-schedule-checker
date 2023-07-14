@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,41 @@
   to {
     transform: rotate(360deg);
   }
+} */
+body {
+  background-color: #ffffff;
+  color: #c9082a;
 }
+
+.button {
+  background-color: #c9082a;
+  color: #ffffff;
+}
+
+.logo {
+  color: #002b5c;
+}
+
+/* Import Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Apply font styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  text-align: center; /* Center align all text */
+  line-height: 1.5; /* Increased line height for better readability */
+}
+
+h1, h2, h3, h4, h5, h6,
+.table-header {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold; /* Larger font weight for headings */
+  font-size: 24px; /* Larger font size for headings */
+  line-height: 1.2; /* Adjust line height for headings, if desired */
+}
+
+/* Example usage for other text */
+p {
+  font-size: 16px; /* Regular font size for paragraphs */
+}
+
