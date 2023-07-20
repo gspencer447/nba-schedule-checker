@@ -1,17 +1,26 @@
-const API_ENDPOINT = "https://api-basketball.p.rapidapi.com/";
-const API_KEY = "5b088115ddmsh65fcfa839e36641p124197jsnf900e94af342";
+const API_ENDPOINT = "https://v1.basketball.api-sports.io";
+const API_KEY = "a30021099806b46a204e47d812231081";
 
 //Function to fetch NBA teams
 const fetchTeams = async () => {
   try {
-    const response = await fetch(`${API_ENDPOINT}/teams?api_key=${API_KEY}`);
-
+    let myHeaders = new Headers();
+      myHeaders.append("x-rapidapi-key", API_KEY);
+      myHeaders.append("x-rapidapi-host", "v1.basketball.api-sports.io");
+      var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+      };
+    const response = await fetch(`${API_ENDPOINT}/teams?season=2021&league=12`, 
+    requestOptions);
+    console.log(response)
     if (!response.ok) {
       throw new Error('Failed to fetch team data');
     }
 
     const data = await response.json();
-
+    console.log(data)
     //Map through team data to get team id and name
     const teamData = data.map((team) => ({
       id: team.id,
