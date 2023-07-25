@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchTeams, fetchTeamLogo } from '../services/api';
+import { fetchTeams, fetchTeamLogo, fetchTeamSchedule } from '../services/api';
 
 const TeamSelection = () => {
   const [teams, setTeams] = useState([]);
@@ -45,6 +45,9 @@ const TeamSelection = () => {
     <div>
       <h2>Team Selection</h2>
       <div>
+        <button onClick={async (event) => {
+          fetchTeamSchedule(14, 2015)
+        }}>Test Dummy Data</button>
         <label htmlFor="selectedTeam">Select Team:</label>
         <select id="selectedTeam" name="selectedTeam" value={selectedTeam} onChange={handleTeamChange}>
           <option value="">Select a team</option>
