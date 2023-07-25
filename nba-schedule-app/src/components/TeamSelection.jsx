@@ -60,7 +60,7 @@ const TeamSelection = () => {
       </div>
 
       <div>
-        <label htmlFor="selectedSeason">Select Season (yyyy-yyyy):</label>
+        <label htmlFor="selectedSeason">Select Season (yyyy):</label>
         <input
           type="text"
           id="selectedSeason"
@@ -68,7 +68,7 @@ const TeamSelection = () => {
           value={selectedSeason}
           onChange={handleSeasonChange}
           pattern="\d{4}-\d{4}"
-          placeholder="yyyy-yyyy"
+          placeholder="yyyy"
         />
       </div>
 
