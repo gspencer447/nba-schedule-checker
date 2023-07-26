@@ -4,7 +4,7 @@ const API_ENDPOINT = "https://www.balldontlie.io/api/v1";
 //Function to fetch NBA teams
 const fetchTeams = async () => {
   try {
-    const response = await fetch(`${API_ENDPOINT}/teams?season=2021&league=12`);
+    const response = await fetch(`${API_ENDPOINT}/teams`);
     console.log(response)
     if (!response.ok) {
       throw new Error('Failed to fetch team data');
@@ -12,6 +12,9 @@ const fetchTeams = async () => {
 
     const data = await response.json();
     console.log(data)
+    if (!Array.isArray(data)) {
+      throw new Error('Invalid response data format. Expected an array.');
+    }
     //Map through team data to get team id and name
     const teamData = data.map((team) => ({
       id: team.id,

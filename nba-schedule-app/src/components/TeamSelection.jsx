@@ -8,17 +8,18 @@ const TeamSelection = () => {
   const [selectedSeason, setSelectedSeason] = useState('');
   const [selectedTeamLogo, setSelectedTeamLogo] = useState('');
 
+  //Fetch NBA teams on component mount
+  const fetchData = async () => {
+    try {
+      const data = await fetchTeams();
+      console.log('Fetched data:', data);
+      setTeams(data);
+    } catch (error) {
+      console.error('Error fetching team data:', error);
+    }
+  };
+  
   useEffect(() => {
-    //Fetch NBA teams on component mount
-    const fetchData = async () => {
-      try {
-        const teamData = await fetchTeams();
-        setTeams(teamData);
-      } catch (error) {
-        console.error('Error fetching team data:', error);
-      }
-    };
-
     fetchData();
   }, []);
 
@@ -48,6 +49,8 @@ const TeamSelection = () => {
         <button onClick={async (event) => {
           fetchTeamSchedule(14, 2015)
         }}>Test Dummy Data</button>
+        <form action="">
+          <div>
         <label htmlFor="selectedTeam">Select Team:</label>
         <select id="selectedTeam" name="selectedTeam" value={selectedTeam} onChange={handleTeamChange}>
           <option value="">Select a team</option>
@@ -57,6 +60,17 @@ const TeamSelection = () => {
             </option>
           ))}
         </select>
+        </div>
+        </form>
+      </div>
+            {/* Display the list of teams in an unordered list */}
+            <div>
+        <h3>All Teams:</h3>
+        <ul>
+          {teams.map((team) => (
+            <li key={team.id}>{team.name}</li>
+          ))}
+        </ul>
       </div>
 
       <div>
